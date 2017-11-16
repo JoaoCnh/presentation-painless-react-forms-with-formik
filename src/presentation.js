@@ -1,5 +1,6 @@
 // Import React
 import React from "react";
+import { Formik } from "formik";
 
 // Import Spectacle Core tags
 import {
@@ -14,14 +15,24 @@ import {
   Text,
   Image,
   Appear,
-  Code
+  Code,
+  ComponentPlayground
 } from "spectacle";
+import preloader from "spectacle/lib/utils/preloader";
+import CodeSlide from "spectacle-code-slide";
 
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
 
+import { formikExample } from "./code/examples";
+
 // Require CSS
 require("normalize.css");
+const shiaLabeoufMagicGif = require("./img/magic.gif");
+
+preloader({
+  shiaLabeoufMagicGif
+});
 
 const theme = createTheme(
   {
@@ -69,7 +80,12 @@ export default class Presentation extends React.Component {
             </Appear>
           </List>
         </Slide>
-        <Slide transition={["zoom"]} bgColor="primary">
+        <Slide
+          transition={["zoom"]}
+          bgColor="primary"
+          controlColor="tertiary"
+          progressColor="tertiary"
+        >
           <Heading size={6} textColor="tertiary" fit caps>
             Installation
           </Heading>
@@ -79,10 +95,41 @@ export default class Presentation extends React.Component {
           </Text>
           <Code>$ npm install --save formik yup</Code>
         </Slide>
-        <Slide transition={["fade"]} bgColor="tertiary">
+        <Slide
+          transition={["fade", "zoom"]}
+          bgColor="secondary"
+          textColor="primary"
+          align="center flex-start"
+        >
           <Heading size={6} textColor="primary" caps>
             Formik Example
           </Heading>
+          <ComponentPlayground
+            scope={{ Formik }}
+            theme="dark"
+            code={formikExample}
+          />
+        </Slide>
+        <Slide
+          transition={["fade", "zoom"]}
+          bgColor="secondary"
+          textColor="primary"
+          align="center flex-start"
+        >
+          <CodeSlide
+            transition={[]}
+            lang="jsx"
+            code={formikExample}
+            ranges={[
+              { loc: [0, 270], title: "Walking through some code" },
+              { loc: [0, 1], title: "The Beginning" },
+              { loc: [1, 2] },
+              { loc: [1, 2], note: "Heres a note!" },
+              { loc: [2, 3] },
+              { loc: [4, 7], image: shiaLabeoufMagicGif },
+              { loc: [8, 10] }
+            ]}
+          />
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <BlockQuote>
