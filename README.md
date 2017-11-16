@@ -4,4 +4,4 @@
 
 ## You can find the Medium post [here](https://hackernoon.com/painless-react-forms-with-formik-e61b70473c60)
 
-## You can find the presentation [here](painless-react-forms-with-formik.surge.sh)
+## You can find the presentation [here](http://painless-react-forms-with-formik.surge.sh/#/)
