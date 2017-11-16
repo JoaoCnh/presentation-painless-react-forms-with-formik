@@ -5,12 +5,14 @@
   "dependencies": {
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "spectacle-scripts": "2.0.0"
+    "spectacle-scripts": "2.0.0",
+    "surge": "^0.19.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "yarn build && surge -p build"
   }
 }
