@@ -13,7 +13,6 @@ import {
   Slide,
   Text,
   Image,
-  Magic,
   Appear,
   Code
 } from "spectacle";
@@ -84,16 +83,6 @@ export default class Presentation extends React.Component {
           <Heading size={6} textColor="primary" caps>
             Formik Example
           </Heading>
-          <iframe
-            src="https://codesandbox.io/embed/zl8zr8yqx"
-            style={{
-              width: "100%",
-              height: 500,
-              border: 0,
-              borderRadius: 4
-            }}
-            sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-          />
         </Slide>
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <BlockQuote>
