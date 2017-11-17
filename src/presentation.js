@@ -1,6 +1,7 @@
 // Import React
 import React from "react";
 import { Formik } from "formik";
+import yup from "yup";
 
 // Import Spectacle Core tags
 import {
@@ -16,7 +17,8 @@ import {
   Image,
   Appear,
   Code,
-  ComponentPlayground
+  ComponentPlayground,
+  Link
 } from "spectacle";
 import preloader from "spectacle/lib/utils/preloader";
 import CodeSlide from "spectacle-code-slide";
@@ -24,15 +26,19 @@ import CodeSlide from "spectacle-code-slide";
 // Import theme
 import createTheme from "spectacle/lib/themes/default";
 
-import { formikExample } from "./code/examples";
+import { formikExample, shortExample } from "./code/examples";
 
 // Require CSS
 require("normalize.css");
-const shiaLabeoufMagicGif = require("./img/magic.gif");
 
-preloader({
-  shiaLabeoufMagicGif
-});
+const images = {
+  formik: require("./img/formik.png"),
+  magic: require("./img/magic.gif"),
+  doit: require("./img/doit.gif"),
+  code: require("./img/code.jpg")
+};
+
+preloader(images);
 
 const theme = createTheme(
   {
@@ -56,7 +62,7 @@ export default class Presentation extends React.Component {
         theme={theme}
       >
         <Slide transition={["zoom"]} bgColor="primary">
-          <Image src={require("./img/formik.png")} />
+          <Image src={images.formik} />
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
             Painless React Forms with Formik
           </Heading>
@@ -97,40 +103,52 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide
           transition={["fade", "zoom"]}
-          bgColor="secondary"
           textColor="primary"
-          align="center flex-start"
+          bgImage={images.code}
+          bgDarken={0.75}
         >
           <Heading size={6} textColor="primary" caps>
             Formik Example
           </Heading>
           <ComponentPlayground
-            scope={{ Formik }}
+            scope={{ Formik, yup }}
             theme="dark"
             code={formikExample}
           />
         </Slide>
-        <Slide
-          transition={["fade", "zoom"]}
-          bgColor="secondary"
+        <CodeSlide
+          transition={[]}
+          bgColor="#122b45"
           textColor="primary"
-          align="center flex-start"
-        >
-          <CodeSlide
-            transition={[]}
-            lang="jsx"
-            code={formikExample}
-            ranges={[
-              { loc: [0, 270], title: "Walking through some code" },
-              { loc: [0, 1], title: "The Beginning" },
-              { loc: [1, 2] },
-              { loc: [1, 2], note: "Heres a note!" },
-              { loc: [2, 3] },
-              { loc: [4, 7], image: shiaLabeoufMagicGif },
-              { loc: [8, 10] }
-            ]}
-          />
-        </Slide>
+          lang="jsx"
+          code={shortExample}
+          ranges={[
+            { loc: [0, 59], title: "Let's talk code" },
+            { loc: [0, 1], note: "Import Formik" },
+            { loc: [2, 3] },
+            { loc: [3, 8], note: "We define our 'model'" },
+            { loc: [8, 15], note: "The validation schema" },
+            { loc: [8, 15], image: images.magic },
+            { loc: [15, 18], note: "The submit callback" },
+            {
+              loc: [18, 27],
+              note: (
+                <Link
+                  href="https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce"
+                  target="_blank"
+                >
+                  Michael Jackson - Render props
+                </Link>
+              )
+            },
+            { loc: [27, 28] },
+            { loc: [28, 36] },
+            { loc: [31, 33], note: "The Formik handlers" },
+            { loc: [52, 56], note: "The submit button" },
+            { loc: [0, 59], image: images.doit },
+            { loc: [0, 59], title: "All done!" }
+          ]}
+        />
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <BlockQuote>
             <Quote>Example Quote</Quote>
